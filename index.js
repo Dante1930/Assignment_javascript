@@ -74,3 +74,15 @@ try {
     console.error(e.message);
 }
 
+try {
+    console.log(add("1,-2,3")); 
+} catch (e) {
+    console.error(e.message);
+}
+
+
+try {
+    console.log(add("//***\n-7***-8***9"));  
+} catch (e) {
+    console.error(e.message);
+}
