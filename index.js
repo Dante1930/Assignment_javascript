@@ -14,7 +14,13 @@ function add(numbers) {
 
     numbers = numbers.replace(/\n/g, delimiter);
 
-    let numArray = numbers.split(delimiter);
+    let numArray =numbers.split(delimiter).map(num => parseInt(num, 10));
+
+    let negatives = numArray.filter(num => num < 0);
+    if (negatives.length > 0) {
+        throw new Error(`Negative numbers not allowed: ${negatives.join(", ")}`);
+    }
+
 
  
     let sum = numArray.reduce((acc, current) => {
@@ -52,3 +58,11 @@ let numbers = [...Array(1000000).keys()].map(i => i + 1).join(',');
 console.log(add("//|\n4|5|6"));      
 console.log(add("//***\n7***8***9")); 
 
+// 5 negative number throw error
+// Example Usage and Test Cases
+try {
+    console.log(add("//;\n1;2"));    
+    console.log(add("//;\n1;2;-3")); 
+} catch (e) {
+    console.error(e.message);
+}
