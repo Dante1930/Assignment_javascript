@@ -32,3 +32,7 @@ let numbers = [...Array(1000000).keys()].map(i => i + 1).join(',');
 
 // 3 Allow the add method to handle new lines between numbers (instead of commas)
 console.log(add("1\n2,3"));
+
+// 3.1 more test cases fir that
+console.log(add("6,10\n15,20"));
+console.log(add("100\n200\n300"));
