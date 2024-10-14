@@ -45,4 +45,10 @@ let numbers = [...Array(1000000).keys()].map(i => i + 1).join(',');
 // console.log(add("6,10\n15,20"));
 // console.log(add("100\n200\n300"));
 
-console.log(add("//;\n1;2"));  
+// 4 Support different delimiters:
+// console.log(add("//;\n1;2"));  
+
+// 4.1 Support different delimiters test cases
+console.log(add("//|\n4|5|6"));      
+console.log(add("//***\n7***8***9")); 
+
