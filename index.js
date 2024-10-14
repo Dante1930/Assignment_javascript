@@ -4,18 +4,26 @@ function add(numbers) {
         return 0;
     }
 
-    // Replace new lines with commas to handle both separators
-    numbers = numbers.replace(/\n/g, ",");
+    let delimiter = ","; 
+    let customDelimiterMatch = numbers.match(/^\/\/(.+)\n/);
 
-    let numArray = numbers.split(",");
+    if (customDelimiterMatch) {
+        delimiter = customDelimiterMatch[1]; 
+        numbers = numbers.split("\n").slice(1).join("\n");
+    }
 
+    numbers = numbers.replace(/\n/g, delimiter);
 
+    let numArray = numbers.split(delimiter);
+
+ 
     let sum = numArray.reduce((acc, current) => {
         return acc + parseInt(current, 10);
     }, 0);
 
     return sum;
 }
+
 
 
 // console.log(add(""));      
@@ -31,8 +39,10 @@ let numbers = [...Array(1000000).keys()].map(i => i + 1).join(',');
 // console.log(add(numbers)) 
 
 // 3 Allow the add method to handle new lines between numbers (instead of commas)
-console.log(add("1\n2,3"));
+// console.log(add("1\n2,3"));
 
-// 3.1 more test cases fir that
-console.log(add("6,10\n15,20"));
-console.log(add("100\n200\n300"));
+// // 3.1 more test cases fir that
+// console.log(add("6,10\n15,20"));
+// console.log(add("100\n200\n300"));
+
+console.log(add("//;\n1;2"));  
